@@ -1,1 +1,0 @@
-/Users/mzhai/Documents/work/git/may/website/tmp/babel-output_path-2iwnK86I.tmp/may/tests/integration/components/travel-map-test.js

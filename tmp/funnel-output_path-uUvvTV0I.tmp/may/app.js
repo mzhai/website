@@ -1,1 +1,0 @@
-/Users/mzhai/Documents/work/git/may/website/tmp/babel-output_path-KYAmod0D.tmp/may/app.js
