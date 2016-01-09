@@ -16,6 +16,9 @@
   "engines": {
     "node": ">= 0.10.0"
   },
+  "jshintConfig" : {
+    "esnext" : true
+  },
   "author": "",
   "license": "MIT",
   "devDependencies": {

@@ -793,7 +793,7 @@ catch(err) {
 if (runningTests) {
   require("may/tests/test-helper");
 } else {
-  require("may/app")["default"].create({"name":"may","version":"0.0.0+7d0316da"});
+  require("may/app")["default"].create({"name":"may","version":"0.0.0+4f04b927"});
 }
 
 /* jshint ignore:end */

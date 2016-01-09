@@ -37,6 +37,5 @@
   },
   "_source": "git://github.com/manifestinteractive/jqvmap.git",
   "_target": "~1.4.0",
-  "_originalSource": "jqvmap",
-  "_direct": true
+  "_originalSource": "jqvmap"
 }
