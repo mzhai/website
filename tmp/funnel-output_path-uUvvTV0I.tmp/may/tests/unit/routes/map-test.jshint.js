@@ -1,0 +1,1 @@
+/Users/mzhai/Documents/work/git/may/website/tmp/jshinter-output_path-BJ5OBHyO.tmp/unit/routes/map-test.jshint.js

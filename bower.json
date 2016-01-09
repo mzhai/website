@@ -12,6 +12,12 @@
     "jquery": "^1.11.3",
     "loader.js": "ember-cli/loader.js#3.2.1",
     "qunit": "~1.18.0",
-    "jquery-mapael": "~1.1.0"
+    "moment": "~2.11.0",
+    "jqvmap": "~1.4.0",
+    "jquery-mapael": "~1.1.0",
+    "raphael": "~2.1.4",
+    "font-awesome": "fontawesome#~4.5.0",
+    "Ionicons": "ionicons#~2.0.1",
+    "jquery-mousewheel": "~3.1.13"
   }
 }

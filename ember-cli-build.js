@@ -19,5 +19,16 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
+
+  app.import('bower_components/raphael/raphael.js');
+  app.import('bower_components/moment/moment.js');
+  app.import('bower_components/jquery-mousewheel/jquery.mousewheel.js');
+
+
+  app.import('bower_components/jquery-mapael/js/jquery.mapael.js');
+  app.import('bower_components/jquery-mapael/js/maps/world_countries.js');
+
+  app.import('bower_components/jqvmap/dist/jquery.vmap.js');
+  app.import('bower_components/jqvmap/dist/maps/jquery.vmap.world.js');
   return app.toTree();
 };
