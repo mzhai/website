@@ -1,0 +1,1 @@
+/Users/mzhai/Documents/work/git/may/website/tmp/jshinter-output_path-pZ8hRrzP.tmp/helpers/start-app.jshint.js

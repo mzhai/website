@@ -1,23 +1,20 @@
-define( [
+define([
 	"../core",
-	"../var/document",
 	"../core/init",
 	"../deferred"
-], function( jQuery, document ) {
+], function( jQuery ) {
 
 // The deferred used on DOM ready
 var readyList;
 
 jQuery.fn.ready = function( fn ) {
-
 	// Add the callback
 	jQuery.ready.promise().done( fn );
 
 	return this;
 };
 
-jQuery.extend( {
-
+jQuery.extend({
 	// Is the DOM ready to be used? Set to true once it occurs.
 	isReady: false,
 
@@ -42,6 +39,11 @@ jQuery.extend( {
 			return;
 		}
 
+		// Make sure body exists, at least, in case IE gets a little overzealous (ticket #5443).
+		if ( !document.body ) {
+			return setTimeout( jQuery.ready );
+		}
+
 		// Remember that the DOM is ready
 		jQuery.isReady = true;
 
@@ -59,15 +61,15 @@ jQuery.extend( {
 			jQuery( document ).off( "ready" );
 		}
 	}
-} );
+});
 
 /**
  * Clean-up method for dom ready events
  */
 function detach() {
 	if ( document.addEventListener ) {
-		document.removeEventListener( "DOMContentLoaded", completed );
-		window.removeEventListener( "load", completed );
+		document.removeEventListener( "DOMContentLoaded", completed, false );
+		window.removeEventListener( "load", completed, false );
 
 	} else {
 		document.detachEvent( "onreadystatechange", completed );
@@ -79,12 +81,8 @@ function detach() {
  * The ready event handler and self cleanup method
  */
 function completed() {
-
 	// readyState === "complete" is good enough for us to call the dom ready in oldIE
-	if ( document.addEventListener ||
-		window.event.type === "load" ||
-		document.readyState === "complete" ) {
-
+	if ( document.addEventListener || event.type === "load" || document.readyState === "complete" ) {
 		detach();
 		jQuery.ready();
 	}
@@ -95,29 +93,23 @@ jQuery.ready.promise = function( obj ) {
 
 		readyList = jQuery.Deferred();
 
-		// Catch cases where $(document).ready() is called
-		// after the browser event has already occurred.
-		// we once tried to use readyState "interactive" here,
-		// but it caused issues like the one
-		// discovered by ChrisS here:
-		// http://bugs.jquery.com/ticket/12282#comment:15
+		// Catch cases where $(document).ready() is called after the browser event has already occurred.
+		// we once tried to use readyState "interactive" here, but it caused issues like the one
+		// discovered by ChrisS here: http://bugs.jquery.com/ticket/12282#comment:15
 		if ( document.readyState === "complete" ) {
-
 			// Handle it asynchronously to allow scripts the opportunity to delay ready
-			window.setTimeout( jQuery.ready );
+			setTimeout( jQuery.ready );
 
 		// Standards-based browsers support DOMContentLoaded
 		} else if ( document.addEventListener ) {
-
 			// Use the handy event callback
-			document.addEventListener( "DOMContentLoaded", completed );
+			document.addEventListener( "DOMContentLoaded", completed, false );
 
 			// A fallback to window.onload, that will always work
-			window.addEventListener( "load", completed );
+			window.addEventListener( "load", completed, false );
 
 		// If IE event model is used
 		} else {
-
 			// Ensure firing before onload, maybe late but safe also for iframes
 			document.attachEvent( "onreadystatechange", completed );
 
@@ -130,19 +122,18 @@ jQuery.ready.promise = function( obj ) {
 
 			try {
 				top = window.frameElement == null && document.documentElement;
-			} catch ( e ) {}
+			} catch(e) {}
 
 			if ( top && top.doScroll ) {
-				( function doScrollCheck() {
+				(function doScrollCheck() {
 					if ( !jQuery.isReady ) {
 
 						try {
-
 							// Use the trick by Diego Perini
 							// http://javascript.nwbox.com/IEContentLoaded/
-							top.doScroll( "left" );
-						} catch ( e ) {
-							return window.setTimeout( doScrollCheck, 50 );
+							top.doScroll("left");
+						} catch(e) {
+							return setTimeout( doScrollCheck, 50 );
 						}
 
 						// detach all dom ready events
@@ -151,14 +142,11 @@ jQuery.ready.promise = function( obj ) {
 						// and execute any waiting functions
 						jQuery.ready();
 					}
-				} )();
+				})();
 			}
 		}
 	}
 	return readyList.promise( obj );
 };
 
-// Kick off the DOM ready check even if the user does not
-jQuery.ready.promise();
-
-} );
+});

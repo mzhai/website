@@ -1,0 +1,1 @@
+/Users/mzhai/Documents/work/git/may/website/tmp/jshinter-output_path-VWaiPRuH.tmp/router.jshint.js

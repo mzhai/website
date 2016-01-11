@@ -1,24 +1,15 @@
-define( [
+define([
 	"../core",
-	"../var/document",
 	"../ajax"
-], function( jQuery, document ) {
-
-// Prevent auto-execution of scripts when no explicit dataType was provided (See gh-2432)
-jQuery.ajaxPrefilter( function( s ) {
-	if ( s.crossDomain ) {
-		s.contents.script = false;
-	}
-} );
+], function( jQuery ) {
 
 // Install script dataType
-jQuery.ajaxSetup( {
+jQuery.ajaxSetup({
 	accepts: {
-		script: "text/javascript, application/javascript, " +
-			"application/ecmascript, application/x-ecmascript"
+		script: "text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"
 	},
 	contents: {
-		script: /\b(?:java|ecma)script\b/
+		script: /(?:java|ecma)script/
 	},
 	converters: {
 		"text script": function( text ) {
@@ -26,7 +17,7 @@ jQuery.ajaxSetup( {
 			return text;
 		}
 	}
-} );
+});
 
 // Handle cache's special case and global
 jQuery.ajaxPrefilter( "script", function( s ) {
@@ -37,22 +28,22 @@ jQuery.ajaxPrefilter( "script", function( s ) {
 		s.type = "GET";
 		s.global = false;
 	}
-} );
+});
 
 // Bind script tag hack transport
-jQuery.ajaxTransport( "script", function( s ) {
+jQuery.ajaxTransport( "script", function(s) {
 
 	// This transport only deals with cross domain requests
 	if ( s.crossDomain ) {
 
 		var script,
-			head = document.head || jQuery( "head" )[ 0 ] || document.documentElement;
+			head = document.head || jQuery("head")[0] || document.documentElement;
 
 		return {
 
 			send: function( _, callback ) {
 
-				script = document.createElement( "script" );
+				script = document.createElement("script");
 
 				script.async = true;
 
@@ -97,6 +88,6 @@ jQuery.ajaxTransport( "script", function( s ) {
 			}
 		};
 	}
-} );
+});
 
-} );
+});
