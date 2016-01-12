@@ -1,8 +1,34 @@
-.travel-map {
-  background-color: yellow; }
-
 .map {
   background-color: #cddee0; }
+
+/* CSS for the tooltip displayed on mousehover on elements */
+.mapTooltip {
+  position: fixed;
+  background-color: #474c4b;
+  moz-opacity: 0.70;
+  opacity: 0.70;
+  filter: alpha(opacity=70);
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 1000;
+  max-width: 200px;
+  display: none;
+  color: #fff; }
+
+body {
+  font-family: Helvetica,Arial,sans-serif; }
+
+h1 {
+  color: #5d5d5d;
+  font-size: 30px; }
+
+.foo {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+  transition: all 200ms ease-in; }
+  .foo:hover {
+    transform: scale(1.5); }
 
 .zoomIn, .zoomOut {
   background-color: #fff;
