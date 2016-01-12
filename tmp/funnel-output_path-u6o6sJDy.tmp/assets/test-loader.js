@@ -1,1 +1,0 @@
-/Users/mzhai/Documents/work/git/may/website/tmp/funnel-input_base_path-jxpDjdm9.tmp/0/bower_components/ember-cli-test-loader/test-loader.js

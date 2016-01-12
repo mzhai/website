@@ -1,1 +1,0 @@
-/Users/mzhai/Documents/work/git/may/website/tmp/broccoli_merge_trees-input_base_path-p3dJwSLE.tmp/6/may/tests/helpers/start-app.jshint.js
