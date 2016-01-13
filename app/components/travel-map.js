@@ -4,6 +4,14 @@ export default Ember.Component.extend({
   initializeMap: function() {
     var dat = this;
 
+    // var svg = document.getElementsByTagName("svg")[0];
+    // if (svg) {
+    //   var bbox = svg.getBBox();
+    //   var viewBox = [bbox.x, bbox.y, bbox.width, bbox.height].join(" ");
+    //   svg.setAttribute("viewBox", viewBox);
+    // }
+
+
     // $(".test").mouseenter(function() {
     //   // $(".test").css({"transform" : "scale(1.5)"});
     // });
@@ -43,8 +51,9 @@ export default Ember.Component.extend({
             stroke: "#000000"
           },
           attrsHover : {
-            "stroke-width": 26,
-            stroke: "#000000"
+            // "stroke-width": 26,
+            stroke: "#00FF00",
+            fill: "#00FF00"
           },
           eventHandlers: {
             // mouseover: function (e, id, mapElem, textElem, elemOptions) {
