@@ -4,6 +4,13 @@ export default Ember.Component.extend({
   initializeMap: function() {
     var dat = this;
 
+    // to do list
+    // 1. make map always full screen
+    // 2. make plane animation
+    // 3. update tooltip and zoom css
+    // 4. create page of pictures
+
+    //this is for cropping the whitesapce from the svgs
     // var svg = document.getElementsByTagName("svg")[0];
     // if (svg) {
     //   var bbox = svg.getBBox();
@@ -107,10 +114,8 @@ export default Ember.Component.extend({
             //   console.log("exit");
             // }
 
-          },
-          cssClass: "plotPoint",
-          name: "plotPoint"
-        },
+          }
+        }
       },
       plots : {
         "paris": {
@@ -136,6 +141,19 @@ export default Ember.Component.extend({
         }
       }
     });
+
+    // for now this is okay
+    // to do: resize the svg height when window height is resized
+    var mapHeight = $(".map").height();
+    $(".map > svg").height(mapHeight);
+    $(".map > svg").each(function () { $(this)[0].setAttribute("viewBox", "0 -100 1000 400") });
+
+    // to do: listen for changes on viewbox, and then add the vertical offset to it
+
+    // .setAttribute("viewBox", "0 -100 1000 400");
+
+    // $('svg').each(function () { $(this)[0].setAttribute('viewBox', '0 0 800 400') });
+    console.log("mapHeight:" + mapHeight);
 
   },
 
