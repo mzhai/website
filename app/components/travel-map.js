@@ -11,12 +11,28 @@ export default Ember.Component.extend({
     // 4. create page of pictures
 
     //this is for cropping the whitesapce from the svgs
-    // var svg = document.getElementsByTagName("svg")[0];
-    // if (svg) {
-    //   var bbox = svg.getBBox();
-    //   var viewBox = [bbox.x, bbox.y, bbox.width, bbox.height].join(" ");
-    //   svg.setAttribute("viewBox", viewBox);
-    // }
+    [].forEach.call(document.getElementsByClassName('svg'), function(svg,i,a) {
+      var bbox = svg.getBBox();
+      var viewBox = [bbox.x, bbox.y, bbox.width, bbox.height].join(" ");
+      svg.setAttribute("viewBox", viewBox);
+    });
+
+    $(".svg__plane").click(function() {
+        this.classList.toggle("spinEffect");
+    });
+
+    // $(".svg__plane").click(function(){
+    //     $(".svg__plane").addClass("spinEffect");
+    // });
+
+
+  // $( ".svg__plane" ).click(function() {
+  //     if (  $( this ).getAttribute( "transform" ) == 'none' ){
+  //         $(this).setAttribute("transform","translate(295px, 115px)");
+  //     } else {
+  //         $(this).setAttribute("transform","" );
+  //     }
+  // });
 
 
     // $(".test").mouseenter(function() {
@@ -161,6 +177,16 @@ export default Ember.Component.extend({
     Ember.run.later(this, function() {
       this.initializeMap();
     });
+  },
+  actions: {
+    test: function() {
+      console.log("test");
+      // $(".svg__plane").addClass("spinEffect");
+      // $(".svg__plane").click(function(){
+        // $(".svg__plane").attr("class", "svg svg__plane spinEffect");
+      // });
+      console.log("test2");
+    }
   }
 
 });

@@ -5,6 +5,19 @@
 .ember-application {
   margin: 0px;
 }
+
+// .svg__plane {
+//   transform: translate(295px, 115px);
+// }
+
+.spinEffect {
+    -webkit-animation: spin 0.5s infinite linear;
+}
+
+@-webkit-keyframes spin {
+  0%  {-webkit-transform: rotate(0deg);}
+  100% {-webkit-transform: rotate(360deg);}
+}
    /* CSS for the tooltip displayed on mousehover on elements */
 // .mapTooltip {
 //   position : fixed;
