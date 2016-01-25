@@ -7,17 +7,50 @@
 }
 
 // .svg__plane {
-//   transform: translate(295px, 115px);
+//   -webkit-transform: scale(2,3);
 // }
 
-.spinEffect {
-    -webkit-animation: spin 0.5s infinite linear;
+.animation-container {
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  display: inline-block;
+  margin: 10px;
 }
 
-@-webkit-keyframes spin {
-  0%  {-webkit-transform: rotate(0deg);}
-  100% {-webkit-transform: rotate(360deg);}
+.follow-click {
+  position: relative;
+  left: 0px;
+  top: 0px;
+  transition: left 1.5s cubic-bezier(.33,.64,.47,.73),
+              top 1.5s cubic-bezier(.52,.37,.72,.45);
 }
+
+
+.moveAway {
+    -webkit-animation: moveAway 2s 1 linear forwards;
+    // transform: scale(295px, 115px);
+    // -webkit-transform: scale(2,2);
+    // -webkit-transform: translate(50px,100px);
+}
+
+.moveBack {
+    -webkit-animation: moveBack 2s 1 linear forwards;
+    // transform: scale(295px, 115px);
+    // -webkit-transform: scale(2,2);
+    // -webkit-transform: translate(50px,100px);
+}
+
+@-webkit-keyframes moveAway {
+  0%  {-webkit-transform: translate(0px,0px);}
+  100% {-webkit-transform: translate(50px,100px);}
+}
+
+@-webkit-keyframes moveBack {
+  0%  {-webkit-transform: translate(50px,100px);}
+  100% {-webkit-transform: translate(0px,0px);}
+}
+
    /* CSS for the tooltip displayed on mousehover on elements */
 // .mapTooltip {
 //   position : fixed;

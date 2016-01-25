@@ -1,6 +1,58 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+
+  // addObject: function(array, object) {
+  //   array.push(object);
+  //   return array;
+  // },
+
+  // removeObject: function(array, object) {
+  //   var i = array.indexOf(object);
+  //   var newArray = array;
+  //   if (i != -1) {
+  //     newArray = array.splice(i, 1);
+  //   }
+  //   return newArray;
+  // },
+
+  getClickPosition: function(e) {
+      var getPosition = function(element) {
+        var xPosition = 0;
+        var yPosition = 0;
+
+        while (element) {
+            xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+            yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+            element = element.offsetParent;
+        }
+        return { x: xPosition, y: yPosition };
+      };
+
+    var theThing = document.querySelector(".svg__plane-wrapper");
+    var parentPosition = getPosition(e.currentTarget);
+    var xPosition = e.clientX - parentPosition.x - (theThing.clientWidth / 2);
+    var yPosition = e.clientY - parentPosition.y - (theThing.clientHeight / 2);
+
+    theThing.style.left = xPosition + "px";
+    theThing.style.top = yPosition + "px";
+
+    // theThing.style.transform = "rotate(180deg)";
+    // e.currentTarget.style.transform = "rotate(-180deg)";
+  },
+
+  getPosition: function(element) {
+    var xPosition = 0;
+    var yPosition = 0;
+
+    while (element) {
+        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+        element = element.offsetParent;
+    }
+    return { x: xPosition, y: yPosition };
+  },
+
   initializeMap: function() {
     var dat = this;
 
@@ -17,9 +69,30 @@ export default Ember.Component.extend({
       svg.setAttribute("viewBox", viewBox);
     });
 
-    $(".svg__plane").click(function() {
-        this.classList.toggle("spinEffect");
-    });
+    var container = document.querySelector(".animation-container");
+
+    container.addEventListener("click", this.getClickPosition);
+
+    // $(".animation-container").addEventListener("click", function() {
+    //   console.log("click");
+    // });
+
+    // $(".svg__plane").classList("moveAway");
+
+    // $(".svg__plane").click(function() {
+    //   var classList = this.classList;
+    //   if (classList.contains("moveAway")) {
+    //     classList.add("moveBack");
+    //     classList.remove("moveAway");
+    //     // dat.removeObject(classList, "moveAway");
+    //     // dat.addObject(classList, "moveBack");
+    //   } else {
+    //     classList.add("moveAway");
+    //     classList.remove("moveBack");
+    //     // dat.removeObject(classList, "moveBack");
+    //     // dat.addObject(classList, "moveAway");
+    //   }
+    // });
 
     // $(".svg__plane").click(function(){
     //     $(".svg__plane").addClass("spinEffect");
@@ -173,11 +246,11 @@ export default Ember.Component.extend({
 
   },
 
-  didInsertElement: function(){
+  setup: function(){
     Ember.run.later(this, function() {
       this.initializeMap();
     });
-  },
+  }.on("didInsertElement"),
   actions: {
     test: function() {
       console.log("test");
@@ -186,6 +259,10 @@ export default Ember.Component.extend({
         // $(".svg__plane").attr("class", "svg svg__plane spinEffect");
       // });
       console.log("test2");
+    },
+
+    animationContainerClicked: function() {
+
     }
   }
 
