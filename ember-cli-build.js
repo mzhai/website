@@ -30,5 +30,11 @@ module.exports = function(defaults) {
 
   app.import('bower_components/jqvmap/dist/jquery.vmap.js');
   app.import('bower_components/jqvmap/dist/maps/jquery.vmap.world.js');
+
+  app.import('bower_components/fullpage.js/jquery.fullPage.js');
+  app.import('bower_components/fullpage.js/vendors/jquery.slimscroll.min.js');
+  app.import('bower_components/fullpage.js/vendors/jquery.easings.min.js');
+
+  app.import('bower_components/fullpage.js/jquery.fullPage.css');
   return app.toTree();
 };

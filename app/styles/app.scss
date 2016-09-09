@@ -1,1 +1,9 @@
-@import "travel-map"
+@import "fonts";
+@import "defaults";
+
+@import "navigation";
+
+@import "travel-map";
+@import "images";
+
+@import "bower_components/fullpage.js/jquery.fullPage.scss";

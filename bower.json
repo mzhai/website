@@ -18,7 +18,8 @@
     "raphael": "~2.1.4",
     "font-awesome": "fontawesome#~4.5.0",
     "Ionicons": "ionicons#~2.0.1",
-    "jquery-mousewheel": "~3.1.13"
+    "jquery-mousewheel": "~3.1.13",
+    "fullpage.js": "~2.7.7"
   },
   "resolutions": {
     "ember": "^2.0.0"
