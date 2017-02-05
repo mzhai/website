@@ -12,3 +12,13 @@ a {
   text-decoration: none;
   color: black;
 }
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    font-family: montserrat;
+  }
+}
+
+div, p {
+  font-family: cardo;
+}
